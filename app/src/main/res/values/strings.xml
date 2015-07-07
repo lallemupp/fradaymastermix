@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FridayMasterMix</string>
+    <string name="action_login">Login to Spotify</string>
+    <string name="action_settings">Settings</string>
+</resources>
