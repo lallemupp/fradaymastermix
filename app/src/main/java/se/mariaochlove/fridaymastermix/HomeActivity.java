@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements SharedPreferencesManager.Callback {
 
     private FragmentManager fragmentManager;
 
@@ -16,8 +16,11 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        HomeFragment homeFragment = new HomeFragment();
-        getFragmentManager().beginTransaction().add(R.id.fragment_container, homeFragment).commit();
+
+        SplashFragment splashFragment = new SplashFragment();
+        getFragmentManager().beginTransaction().add(R.id.fragment_container, splashFragment).commit();
+
+        SharedPreferencesManager.getInstance().readAllPreferences(this, this);
     }
 
 
@@ -42,5 +45,10 @@ public class HomeActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void done() {
+        HomeFragment homeFragment = new HomeFragment();
+        getFragmentManager().beginTransaction().add(R.id.fragment_container, homeFragment).commit();
     }
 }

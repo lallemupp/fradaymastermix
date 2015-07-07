@@ -5,6 +5,11 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
+        sourceSets {
+            main {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
         applicationId "se.mariaochlove.fridaymastermix"
         minSdkVersion 19
         targetSdkVersion 22
