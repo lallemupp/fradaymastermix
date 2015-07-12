@@ -1,31 +1,28 @@
-package se.mariaochlove.fridaymastermix;
+package se.mariaochlove.fridaymastermix.home;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import se.mariaochlove.fridaymastermix.R;
 
-/**
- * A placeholder fragment containing a simple view.
- */
-public class HomeFragment extends Fragment {
+public class WelcomeFragment extends Fragment {
 
-    public HomeFragment() {
-    }
+    private static final String TAG = WelcomeFragment.class.getSimpleName();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        Log.d(TAG, "Creating home fragment view");
+        return inflater.inflate(R.layout.fragment_welcome, container, false);
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
-
     }
 }

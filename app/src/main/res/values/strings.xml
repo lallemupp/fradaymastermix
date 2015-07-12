@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">FridayMasterMix</string>
-    <string name="action_login">Login to Spotify</string>
+    <string name="action_login">Login</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello World</string>
+    <string name="splash_loading">LOADING!</string>
+    <string name="home_welcome">Welcome!</string>
+    <string name="home_description">This is an app that will allow you and your friends to collaborate
+    on Spotify play lists and listen to them together in a fun way even if you are on different locations.\n\nJoin the fun by clicking the login in the menu above.</string>
 </resources>

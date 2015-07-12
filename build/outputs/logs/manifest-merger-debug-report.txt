@@ -15,7 +15,7 @@ ADDED from AndroidManifest.xml:5:5
 		ADDED from AndroidManifest.xml:7:9
 	android:theme
 		ADDED from AndroidManifest.xml:9:9
-activity#se.mariaochlove.fridaymastermix.HomeActivity
+activity#se.mariaochlove.fridaymastermix.home.HomeActivity
 ADDED from AndroidManifest.xml:10:9
 	android:label
 		ADDED from AndroidManifest.xml:12:13

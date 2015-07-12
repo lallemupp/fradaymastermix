@@ -1,7 +1,8 @@
-package se.mariaochlove.fridaymastermix;
+package se.mariaochlove.fridaymastermix.home;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,10 +15,13 @@ import java.util.Map;
 public enum SharedPreferencesManager {
     INSTANCE;
 
+    private static final String TAG = SharedPreferencesManager.class.getSimpleName();
     private static final String SHARED_PREFERENCES_NAME = "FRIDAY_MASTER_MIX";
-    private static final String SPOTIFY_TOKEN = "SPOTIFY_TOKEN";
-    private static final String SPOTIFY_TOKEN_EXPIRES = "SPOTIFY_TOKEN_EXPIRES";
-    private static final String SPOTIFY_TOKEN_CREATED = "SPOTIFY_TOKEN_CREATED";
+
+    public static final String SPOTIFY_TOKEN = "SPOTIFY_TOKEN";
+    public static final String SPOTIFY_TOKEN_EXPIRES = "SPOTIFY_TOKEN_EXPIRES";
+    public static final String SPOTIFY_TOKEN_CREATED = "SPOTIFY_TOKEN_CREATED";
+    public static final String SPOTIFY_REFRESH_TOKEN = "SPOTIFY_REFRESH_TOKEN";
 
     private Map<String, String> map;
 
@@ -48,15 +52,17 @@ public enum SharedPreferencesManager {
         new Thread() {
             @Override
             public void run() {
+                Log.d(TAG, "Reading preferences on thread: " + Thread.currentThread());
                 SharedPreferences preferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
 
                 map.put(SPOTIFY_TOKEN, preferences.getString(SPOTIFY_TOKEN, null));
                 map.put(SPOTIFY_TOKEN_EXPIRES, preferences.getString(SPOTIFY_TOKEN_EXPIRES, "0"));
                 map.put(SPOTIFY_TOKEN_CREATED, preferences.getString(SPOTIFY_TOKEN_CREATED, "0"));
 
+                Log.d(TAG, "Woke up. Will now call done.");
                 callback.done();
             }
-        }.run();
+        }.start();
     }
 
     /**
@@ -75,7 +81,7 @@ public enum SharedPreferencesManager {
                 editor.putString(name, value);
                 editor.apply();
             }
-        }.run();
+        }.start();
      }
 
      /**
