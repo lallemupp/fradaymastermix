@@ -1,5 +1,6 @@
 package se.mariaochlove.fridaymastermix.home;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -45,10 +46,12 @@ public enum SharedPreferencesManager {
      * Loads all shared preferences into a map in a {@link Thread} and notifies the provided callback
      * when done. This should only be called once!
      *
+     * The callback to the provided object will be done on the UI thread.
+     *
      * @param context the context that is used to read the preferences.
      * @param callback the callback that will be notified when the preferences have been loaded.
      */
-    public synchronized void readAllPreferences(final Context context, final Callback callback) {
+    public synchronized void readAllPreferences(final Activity context, final Callback callback) {
         new Thread() {
             @Override
             public void run() {
@@ -60,7 +63,12 @@ public enum SharedPreferencesManager {
                 map.put(SPOTIFY_TOKEN_CREATED, preferences.getString(SPOTIFY_TOKEN_CREATED, "0"));
 
                 Log.d(TAG, "Woke up. Will now call done.");
-                callback.done();
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        callback.done();
+                    }
+                });
             }
         }.start();
     }

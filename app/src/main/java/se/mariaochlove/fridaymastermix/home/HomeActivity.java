@@ -19,16 +19,17 @@ public class HomeActivity extends Activity implements SharedPreferencesManager.C
     private static final String TAG = HomeActivity.class.getSimpleName();
 
     private FragmentManager fragmentManager;
-
     private Handler mainThreadHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        mainThreadHandler = new Handler();
+
         fragmentManager = getFragmentManager();
-        mainThreadHandler = new Handler(Looper.getMainLooper());
 
         replaceFragment(new SplashFragment(), false);
 
@@ -64,28 +65,22 @@ public class HomeActivity extends Activity implements SharedPreferencesManager.C
     }
 
     private void replaceFragment(final Fragment fragment, final boolean addToBackStack) {
-        mainThreadHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragment_container, fragment);
-                if (addToBackStack) {
-                    transaction.addToBackStack(null);
-                }
-                transaction.commit();
-            }
-        });
-
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        if (addToBackStack) {
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
     }
 
     public void done() {
         Log.d(TAG, "Done!");
 
         String refreshToken = SharedPreferencesManager.getInstance().getSharedPreferences(SharedPreferencesManager.SPOTIFY_REFRESH_TOKEN);
-        if (refreshToken == null) {
-            replaceFragment(new WelcomeFragment(), false);
-        } else {
-            replaceFragment(new HomeFragment(), false);
-        }
+        //if (refreshToken == null) {
+        //    replaceFragment(new WelcomeFragment(), false);
+        //} else {
+        replaceFragment(new HomeFragment(), false);
+        //}
     }
 }
