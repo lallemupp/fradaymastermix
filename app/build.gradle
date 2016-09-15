@@ -1,30 +1,43 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
 
+    /**
+     * compileSdkVersion specifies the Android API level Gradle should use to
+     * compile your app. This means your app can use the API features included in
+     * this API level and lower.
+     *
+     * buildToolsVersion specifies the version of the SDK build tools, command-line
+     * utilities, and compiler that Gradle should use to build your app. You need to
+     * download the build tools using the SDK Manager.
+     */
+
+    compileSdkVersion 24
+    buildToolsVersion "23.0.3"
     defaultConfig {
-        sourceSets {
-            main {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-            }
-        }
-        applicationId "se.mariaochlove.fridaymastermix"
-        minSdkVersion 19
-        targetSdkVersion 22
+        applicationId 'se.fridaymastermix.fridaymastermix'
+        minSdkVersion 21
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
+
+        /**
+         * By default, Android Studio configures the release build type to enable code
+         * shrinking, using minifyEnabled, and specifies the Proguard settings file.
+         */
+
         release {
-            minifyEnabled false
+            minifyEnabled true // Enables code shrinking for the release build type.
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+    }
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
-}

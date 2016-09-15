@@ -2,11 +2,25 @@
 <items version="2" >
 
     <item
+        jar="/home/love/workspace/fridaymastermix/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="9651ac1972f6cba702e179cd3193444a785665e3">
+        <dex dex="/home/love/workspace/fridaymastermix/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_1de853f90588805b86b12b25424435bb1968207d/classes.dex" />
+    </item>
+    <item
+        jar="/home/love/workspace/fridaymastermix/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="e0c005a68d76d7b8001219be7f43d599e948383d">
+        <dex dex="/home/love/workspace/fridaymastermix/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_2c66cfedc3034ae5f212bcc0b58aa495f9458cf9/classes.dex" />
+    </item>
+    <item
         jar="/home/love/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.4/5fe28b9518e58819180a43a850fbc0dd24b7c050/commons-lang3-3.4.jar"
-        jumboMode="false"
-        revision="22.0.1"
+        jumboMode="true"
+        revision="23.0.3"
         sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
-        <dex dex="/home/love/workspace/fridaymastermix/app/build/intermediates/pre-dexed/debug/commons-lang3-3.4-7100981349cb9b7d98d11522e08e1e392f64434b.jar" />
+        <dex dex="/home/love/workspace/fridaymastermix/app/build/intermediates/transforms/dex/debug/folders/1000/10/commons-lang3-3.4_7100981349cb9b7d98d11522e08e1e392f64434b/classes.dex" />
     </item>
 
 </items>
